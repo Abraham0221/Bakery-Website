@@ -14,5 +14,15 @@ const server = http.createServer((req, res) =>{
             res.end();
         });
     }
-    
+    const server = http.createServer((req, res) =>{
+    const page = url.parse(req.url).pathname;
+    const params = querystring.parse(url.parse(req.url).query);
+    console.log(page);
+    if (page == '/') {
+        fs.readFile('index.html', function(err, data) {
+            res.writeH (200, {'Content-Type': 'text/html'})
+            res.write(data)
+            res.end();
+        });
+    }
 })
